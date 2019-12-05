@@ -26,9 +26,7 @@ def posts_detail(request, slug):
 def posts_create(request):
     form = PostModelForm(request.POST or None, request.FILES or None)
     if form.is_valid():
-        form.instance.author, created = Profile.objects.user.get_or_cerate(
-            user=request.user,
-        )
+        form.instance.author = request.user
         form.save()
         return redirect('posts-list')
     context = {

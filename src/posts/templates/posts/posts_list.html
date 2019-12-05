@@ -6,17 +6,19 @@
     <p>This site barely works</p>
 </div>
 {%endblock header %}
-<h1>Posts</h1>
+
 {% block content %}
 {% for post in all_posts %}
 <section class="post">
-
-    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-    <p>{{ post.author }} {{ post.date|date:"j.n.Y" }}</p>
-
-
-    <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" class="post-list"></a>
-
+    <div class="row">
+        <div class="col-md-3">
+            <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}"></a>
+        </div>
+        <div class="col-md-9">
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <p>{{ post.author }} {{ post.date|date:"j.n.Y" }}</p>
+        </div>
+    </div>
 </section>
     
 {% endfor %}

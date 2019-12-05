@@ -2,13 +2,18 @@
 
 {% block content %}
 
-<div class="row">
-    <img src="{{ post.image.url }}">
-</div>
-<div class="row">
-    <h2>{{ post.title }} <small>Written by {{post.author}}</small></h2>
+<div class="content-section">
+    <legend class="border-bottom mb-3">
+        <img src="{{ post.image.url }}">
+    </legend>
+    <h2>{{ post.title }}</h2>
+    <p class="text-muted small">{{ post.author }} {{ post.date|date:"j.n.Y" }}</p>
+    <div>
+        <p>{{ post.content }}</p>
+    </div>
     
-    <p>{{post.content}}</p>
 </div>
-<button class="btn btn-default"><a href="{% url 'posts-list' %}">Go back to all posts</a></button>
+<a href="{% url 'posts-list' %}">
+    <button class="button">Go back to all posts</button>
+</a>
 {% endblock content %}

@@ -6,7 +6,7 @@ from users.models import Profile
 class Post(models.Model):
     title = models.CharField(max_length=120)
     content = models.TextField()
-    author = models.ForeignKey(to=Profile, on_delete=models.CASCADE) #CASCADED deletes the post if user gets deleted
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE) #CASCADED deletes the post if user gets deleted
     image = models.ImageField(upload_to='posts_pictures')
     slug = models.SlugField(unique=True)
     date = models.DateTimeField(default=timezone.now)
