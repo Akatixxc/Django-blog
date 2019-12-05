@@ -1,0 +1,23 @@
+{% extends 'posts/base.html' %}
+
+{% block header %}
+<div class="header">
+    <h1><b>Andreas Blog</b></h1>
+    <p>This site barely works</p>
+</div>
+{%endblock header %}
+<h1>Posts</h1>
+{% block content %}
+{% for post in all_posts %}
+<section class="post">
+
+    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+    <p>{{ post.author }} {{ post.date|date:"j.n.Y" }}</p>
+
+
+    <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" class="post-list"></a>
+
+</section>
+    
+{% endfor %}
+{% endblock content %}
