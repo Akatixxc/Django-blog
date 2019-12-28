@@ -5,11 +5,17 @@ from .models import Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from users.models import Profile
+from django.core.paginator import Paginator
 
 # Create Retrieve Update Delete
 
 def posts_list(request):
     all_posts = Post.objects.order_by('-date').all()
+
+    paginator = Paginator(all_posts, 10)
+    page = request.GET.get('page', 1)
+    all_posts = paginator.page(page)
+
     context = {
         'all_posts': all_posts
     }

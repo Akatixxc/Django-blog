@@ -22,4 +22,16 @@
 </section>
     
 {% endfor %}
+
+{% if all_posts.has_previous %}
+    <a href="?page={{ all_posts.previous_page_number }}"
+        class="pager-prev{% if not all_posts.has_previous %} inactive{% endif %}">
+        <button class="button">Previous page</button></a>
+{% endif %}
+{% if all_posts.has_next %}
+    <a href="?page={{ all_posts.next_page_number }}"
+        class="pager-next{% if not all_posts.has_next %} inactive{% endif %}">
+        <button class="button">Next page</button></a>
+
+{% endif %}
 {% endblock content %}
